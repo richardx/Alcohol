@@ -8,6 +8,24 @@ namespace Alcohol.Tests
         private Beer addBeer = new Beer { Id = 8, Name = "Colabeer", Abv = 9 };
 
         [TestMethod()]
+        public void GetByIdTest()
+        {
+            // Arrange
+            BeerRepository repository = new BeerRepository();
+            repository.AddBEER(addBeer);
+            int id = 8;
+            Beer expectedBeer = new Beer { Id = 8, Name = "Colabeer", Abv = 9 };
+
+            // Act
+            Beer actualBeer = repository.GetbeerById(id);
+
+            // Assert
+            Assert.AreEqual(expectedBeer.Id, actualBeer.Id);
+            Assert.AreEqual(expectedBeer.Name, actualBeer.Name);
+            Assert.AreEqual(expectedBeer.Abv, actualBeer.Abv);
+        }
+
+        [TestMethod()]
         public void GetBeerTest()
         {
             BeerRepository repository = new BeerRepository();
@@ -35,22 +53,6 @@ namespace Alcohol.Tests
         }
 
         [TestMethod()]
-        public void GetByIdTest()
-        {
-            // Arrange
-            BeerRepository repository = new BeerRepository();
-            int beerId = 2;
-
-            // Act
-            var beer = repository.GetbeerById(beerId);
-
-            // Assert
-            Assert.IsNotNull(beer);
-            Assert.AreEqual("Carlsberg", beer.Name);
-            Assert.AreEqual(5, beer.Abv);
-        }
-
-        [TestMethod()]
         public void AddBeerTest()
         {
             List<Beer> beers = new()
@@ -62,6 +64,7 @@ namespace Alcohol.Tests
                     Abv = 5
                 }
             };
+
             beers.Add(addBeer);
             Assert.IsTrue(beers.Contains(addBeer));
         }

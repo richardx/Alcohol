@@ -7,20 +7,6 @@
         public int Abv { get; set; }
 
 
-        // Copy constructor
-        public Beer(Beer other)
-        {
-            Id = other.Id;
-            Name = other.Name;
-            Abv = other.Abv;
-        }
-
-        // Default constructor
-        public Beer()
-        {
-        }
-
-
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, Abv: {Abv}";
